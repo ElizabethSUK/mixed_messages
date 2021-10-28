@@ -1,9 +1,7 @@
 
 // Random number generator that can be called by other functions
 const randNumGen = (number) => {
-   const num =  Math.floor(Math.random() * number);
-   //console.log(num);
-   return num;
+   return Math.floor(Math.random() * number);
 }
 
 // Arrays that contain the messages that will be used to generate the messages. - Probably be moved inside the message generating function - Dnd Related
@@ -17,12 +15,10 @@ const enemyGen = () => {
         "Ogres",
         "Strange Spherical objects",
         "Anti-vaxxers",
-        "Fuzzy Wizards"
+        "Fuzzy Wizards",
     ];
-    const randEnemy = enemyArr[randNumGen(enemyArr.length)];
-    console.log(randEnemy);
-    return randEnemy;
-}
+    return enemyArr[randNumGen(enemyArr.length)];
+};
 
 const enemyActionGen = () => {
 
@@ -34,7 +30,7 @@ const enemyActionGen = () => {
         "Provacatively",
         "Aggresively",
         "Seductively",
-        "Like an American"
+        "Like an American",
     ];
     const randDescriptor = descriptorArr[randNumGen(descriptorArr.length)];
     const actionArr = [
@@ -42,14 +38,35 @@ const enemyActionGen = () => {
         "Chucking spears",
         `Eating ${randDescriptor}`,
         "Insulting James",
-        `Pillaging Towns ${randDescriptor}`
+        `Pillaging Towns ${randDescriptor}`,
     ];
-    const randAction = actionArr[randNumGen(actionArr.length)];
-    return randAction;
-}
+    return actionArr[randNumGen(actionArr.length)];
+};
 
+const feelings = () => {
+    const feelingArr = [
+        "I'm scared",
+        "I've called the police but they said go home",
+        "It offends my religous freedoms",
+        "I think this is a good thing",
+        "I'm not sure how to feel about this",
+    ];
+    return feelingArr[randNumGen(feelingArr.length)];
+};
+
+const sentenceCreator = (enemies, action, feelings) => {
+    const sentenceArr = [
+        `Help ${enemies} are ${action} and ${feelings}`,
+        `${feelings} because ${enemies} are ${action}`,
+        `${action} with ${enemies} is great`,
+    ];
+    return sentenceArr[randNumGen(sentenceArr.length)];
+};
+
+
+console.log(sentenceCreator(enemyGen(), enemyActionGen(), feelings()));
 // let i = 0;
-// while (i < 20) {
-//     console.log(enemyActionGen());
+// while (i < 5) {
+//     console.log(sentenceCreator(enemyGen(), enemyActionGen(), feelings()));
 //     i++
 // }
