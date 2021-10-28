@@ -1,3 +1,3 @@
 # mixed_messages
 
-CodeCademy project using **JavaScript**
+CodeCademy project originally using **JavaScript** then ported to **TypeScript**
